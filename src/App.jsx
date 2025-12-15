@@ -64,7 +64,48 @@ function App() {
         </div>
 
         {/* Task List - পরে add করব */}
-        <p>Tasks will appear here...</p>
+        {/* Task List */}
+        <div className="bg-gray-800 rounded-xl border border-gray-700">
+          {/* Table Header */}
+          <div className="grid grid-cols-12 gap-4 p-4 bg-gray-700 font-semibold border-b border-gray-600">
+            <div className="col-span-3">Title</div>
+            <div className="col-span-4">Description</div>
+            <div className="col-span-2">Category</div>
+            <div className="col-span-2">Priority</div>
+            <div className="col-span-1 text-center">Options</div>
+          </div>
+
+          {/* Task Items */}
+          <div>
+            {tasks.length === 0 ? (
+              <p className="text-center text-gray-400 py-8">No tasks yet. Add your first task!</p>
+            ) : (
+              tasks.map((task) => (
+                <div key={task.id} className="grid grid-cols-12 gap-4 p-4 border-b border-gray-700 hover:bg-gray-700">
+                  <div className="col-span-3 font-medium">
+                    {task.title}
+                  </div>
+                  <div className="col-span-4 text-gray-300">    
+                    {task.description}
+                  </div>
+                  <div className="col-span-2">
+                    <span className="bg-blue-500 px-3 py-1 rounded-full text-xs">
+                      {task.category}
+                    </span>
+                  </div>
+                  <div className="col-span-2 font-semibold">
+                    {task.priority}
+                  </div>
+                  <div className="col-span-1 flex justify-center gap-2">
+                    <button className="text-red-400 hover:text-red-300">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
       </main>
 
       {/* Add Task Modal */}
