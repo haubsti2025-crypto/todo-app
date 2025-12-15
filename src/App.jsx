@@ -33,6 +33,10 @@ function App() {
     }
   }
 
+  function handleDeleteTask(id) {
+    setTasks(tasks.filter(task => task.id !== id));
+  }
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
@@ -57,7 +61,9 @@ function App() {
             >
               Add Task
             </button>
-            <button className="bg-red-500 hover:bg-red-600 px-6 py-2 rounded-lg font-semibold">
+            <button 
+              className="bg-red-500 hover:bg-red-600 px-6 py-2 rounded-lg font-semibold"
+            >
               Delete All
             </button>
           </div>
@@ -97,7 +103,10 @@ function App() {
                     {task.priority}
                   </div>
                   <div className="col-span-1 flex justify-center gap-2">
-                    <button className="text-red-400 hover:text-red-300">
+                    <button
+                      onClick={() => handleDeleteTask(task.id)}
+                      className="text-red-400 hover:text-red-300"
+                    >
                       Delete
                     </button>
                   </div>
