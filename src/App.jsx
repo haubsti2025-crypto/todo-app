@@ -37,6 +37,11 @@ function App() {
     setTasks(tasks.filter(task => task.id !== id));
   }
 
+  function handleDeleteAll() {
+    if (window.confirm('Are you sure you want to delete all tasks?')) {
+      setTasks([]);
+    }
+  }
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
@@ -62,6 +67,7 @@ function App() {
               Add Task
             </button>
             <button 
+              onClick={handleDeleteAll}
               className="bg-red-500 hover:bg-red-600 px-6 py-2 rounded-lg font-semibold"
             >
               Delete All
